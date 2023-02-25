@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Encryption function
+string encrypt(string message, int key) {
+string cipher = "";
+for (char c : message) {
+if (c >= 'A' && c <= 'Z') {
+cipher += (char)(((c - 'A') + key) % 26 + 'A');
+} else if (c >= 'a' && c <= 'z') {
+cipher += (char)(((c - 'a') + key) % 26 + 'a');
+} else {
+cipher += c;
+}
+}
+return cipher;
+}
+
+int main() {
+// Keys
+int k1 = 13, k2 = 6, k3 = 28;
+
+// Names to encrypt
+string name = "Fedor";
+string first_name = "Black";
+string second_first_name = "White";
+
+// Encrypt name
+string encrypted_name = encrypt(name, k1);
+cout << "Encrypted name: " << encrypted_name << endl;
+
+// Encrypt first name
+string encrypted_first_name = encrypt(first_name, k2);
+cout << "Encrypted first name: " << encrypted_first_name << endl;
+
+// Encrypt second first name
+string encrypted_second_first_name = encrypt(second_first_name, k3);
+cout << "Encrypted second first name: " << encrypted_second_first_name << endl;
+
+return 0;
+}
