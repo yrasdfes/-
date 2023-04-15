@@ -1,0 +1,19 @@
+#include <iostream>
+#include <queue>  
+
+using namespace std;
+
+int main() {
+  queue <int> q;
+    for (int i = 0; i < 50; i++) {
+        q.push(rand() % 10 + 1);
+    }
+    int total = 0;
+    for (int i = 0; i < 50; i++) {
+        total -= q.front();
+        q.pop();
+    }
+    cout << total;
+     system("pause");
+    return 0;
+}
