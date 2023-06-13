@@ -1,0 +1,30 @@
+#include <iostream>
+#include <iomanip> // для setw
+
+int main()
+{
+  const int n = 8;  
+  int arr[n] = {5, 9, 12, 3, 0, -4, 2, 1};
+  int pref[n + 1] = { 0 }; // { 0 } - инициализация нулями
+
+  for (int i = 1; i < n + 1; i++)
+  {
+    pref[i] = arr[i - 1] + pref[i - 1];
+  }
+
+  // setw - задает ширину поля
+
+  for (int i = 0; i < n; i++)
+  {
+    std::cout << std::setw(2) << arr[i] << ' ';
+  }
+  std::cout << std::endl;
+
+  for (int i = 0; i < n + 1; i++)
+  {
+    std::cout << std::setw(2) << pref[i] << ' ';
+  }
+  std::cout << std::endl;
+
+  return 0;
+}
