@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+bool comp(pair<int, char> e1, pair<int, char> e2) {
+    if (e1.first < e2.first)
+        return true;
+    if (e1.first > e2.first)
+        return false;
+    if (e1.second == '-' && e2.second == '+')
+        return false;
+    return true;
+}
+
+int main()
+{
+    vector<pair<int, int>> segments = { {1, 5}, {3, 7}, {6, 12} };
+    vector<pair<int, char>> events;
+    for (auto [left, right] : segments) {
+        events.push_back({ left, '+' });
+        events.push_back({ right, '-' });
+    }
+    sort(events.begin(), events.end(), comp);
+    int ans = 0; // кол-во друзей, которые вместе смогут отметить
+    int cur = 0; // текущее кол-во друзей в отпуске
+    int day = -1; // лучший день для сбора на текущий момент
+    for (auto [time, ev] : events) {
+        if (ev == '+') cur++;
+        else cur--;
+        if (cur > ans) {
+            ans = cur;
+            day = time;
+        }
+    }
+    cout << ans << " " << day;
+}
