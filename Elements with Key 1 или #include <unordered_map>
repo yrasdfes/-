@@ -1,0 +1,28 @@
+#include <iostream>
+#include <unordered_map>
+
+int main()
+{
+  std::unordered_multimap<int, int> sample;
+
+  sample.insert({ 1, 2 });
+  sample.insert({ 1, 8 });
+  sample.insert({ 2, 3 });
+  sample.insert({ 3, 4 });
+  sample.insert({ 2, 6 });
+  sample.insert({ 1, -5 });
+
+  auto itr = sample.equal_range(1);
+  std::cout << "Elements with Key 1: ";
+  for (auto it = itr.first; it != itr.second; it++) {
+    std::cout << it->second << " ";
+  }
+
+  std::cout << std::endl;
+
+  itr = sample.equal_range(2);
+  std::cout << "Elements with Key 2: ";
+  for (auto it = itr.first; it != itr.second; it++) {
+    std::cout << it->second << " ";
+  }
+}
