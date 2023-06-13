@@ -1,0 +1,14 @@
+#include <iostream>
+#include <functional>
+
+int main() {
+  int x = 10, y = 20, z = 30;
+
+  std::function<int(void)> return_sum = [x, y, &z]() {
+    return x + y + z; 
+  };
+
+  x = 20; y = 30; z = 40;
+
+  std::cout << return_sum() << std::endl;
+}
