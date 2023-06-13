@@ -1,0 +1,24 @@
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+int main() {
+    std::unordered_multimap<std::string, std::string> studentSubjects;
+
+    // Добавление пар ключ-значение в unordered_multimap
+    studentSubjects.insert({ "Alice", "Math" });
+    studentSubjects.insert({ "Alice", "Physics" });
+    studentSubjects.insert({ "Bob", "Computer Science" });
+    studentSubjects.insert({ "Bob", "Physics" });
+
+    // Итерация по элементам unordered_multimap
+    std::cout << "Student Subjects:" << std::endl;
+    for (auto [first, second] : studentSubjects) {
+        std::cout << "Student: " << first << ", Subject: " << second << std::endl;
+    }
+    std::cout << std::endl; 
+    for (const auto& pair : studentSubjects) {
+        std::cout << "Student: " << pair.first << ", Subject: " << pair.second << std::endl;
+    }
+
+}
